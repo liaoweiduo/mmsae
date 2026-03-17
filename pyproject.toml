@@ -1,0 +1,53 @@
+[tool.black]
+line-length = 240
+
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools_scm[tomli]>=6.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mmsae"
+version = "1.0"
+authors = [
+    { name = "liaoweiduo", email = "liaoweiduo@gmail.com" },
+]
+description = "Training env for mmsae."
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    # "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.9"
+license = "MIT"
+dependencies = [
+    "peft",
+    "transformers==4.51.3",
+    "transformer-lens==2.9.1",
+    "datasets",
+    "torchvision",
+    "accelerate",
+    "deepspeed",
+    "hf_transfer",
+    "wandb",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+opt = [
+]
+
+[project.scripts]
+sae-train = "sae.launch.train:main"
+
+[tool.setuptools.packages.find]
+# where = ["src"]
+include = ["sae*"]
+# exclude = [
+#     "test"
+# ]
+
+[tool.wheel]
+exclude = [
+    "test"
+]
